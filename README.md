@@ -9,7 +9,7 @@ A flutter application to search for images from the unsplash api.
 Download or clone this repo by using the link below:
 
 ```
-https://github.com/zubairehman/flutter-boilerplate-project.git
+https://github.com/KingsleyUsoroeno/EarniPay-Image-Search
 ```
 
 **Step 2:**
@@ -51,43 +51,39 @@ based on the appropriate state change `photo_search_screen_widget_test.dart` and
 
 
 ## Hydrated Bloc
-Hydrated Bloc is a powerful state management library that allows automatic persistence and 
+[Hydrated Bloc](https://pub.dev/packages/hydrated_bloc) is a powerful state management library that allows automatic persistence and 
 restoration of bloc and cubit states. It provides an easy way to preserve the state of your 
 application across restarts or in scenarios where you need to persist and restore state. 
 By using Hydrated Bloc, you can focus on building your application's logic without worrying 
 about state persistence.
 
-[Hydrated Bloc](https://pub.dev/packages/hydrated_bloc)
+
 
 ## Dependency Injection
-getIt and injectable are popular dependency injection libraries for Flutter. Dependency 
+[getIt](https://pub.dev/packages/get_it) and [injectable](https://pub.dev/packages/injectable) are popular dependency injection libraries for Flutter. Dependency 
 injection helps to manage the dependencies of your application and enables easier testing 
 and separation of concerns. getIt provides a simple service locator approach, 
 while injectable is a code generator that simplifies the setup and usage of getIt.
 
-[getIt](https://pub.dev/packages/get_it) [injectable](https://pub.dev/packages/injectable)
 
-Networking
+## Networking
 
-Dio is a powerful HTTP client library for Flutter, inspired by the well-known Retrofit 
+[Dio](https://github.com/flutterchina/dio) is a powerful HTTP client library for Flutter, inspired by the well-known Retrofit 
 library for Android. It provides a simple and intuitive way to make HTTP requests 
 and handle responses. Dio supports various features such as request cancellation, 
 interceptors, file uploads, and more, making it an excellent choice 
 for handling network requests in your Flutter project.
 
-[Dio](https://github.com/flutterchina/dio)
 
-Image Caching
+## Image Caching
 
-CacheNetworkImage is a Flutter library that simplifies image loading and caching 
+[CacheNetworkImage](https://pub.dev/packages/CacheNetworkImage) is a Flutter library that simplifies image loading and caching 
 from network sources. It efficiently caches images locally, reducing the need for repeated 
 network requests and improving the performance of your application. By using CacheNetworkImage, 
 you can effortlessly display and cache images from URLs in your Flutter project.
 
-[CacheNetworkImage](https://pub.dev/packages/CacheNetworkImage)
 
-
-Happy coding! :) :)
+Happy coding! motion) 
 
 
 
