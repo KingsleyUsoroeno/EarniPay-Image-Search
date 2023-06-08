@@ -49,11 +49,12 @@ Run the `flutter test` command to execute all the tests
 
 **Step 5:**
 
-The project uses the unSplash API to allow users search for images they would to see, in order to
+The project uses the unsplash API to allow users search for images they would to see, in order to
 make use of the api you would have to create an account, use the following url as a reference guide
-[unsplash Developer API](https://unsplash.com/developers), once that is done get your clientId and set it as an environment
-variable, this medium article is a good reference on how to go about that, the clientId is
-very important as it, gives your app authorization when communicating with the unsplash API.
+[unsplash Developer API](https://unsplash.com/developers), once that is done get your clientId and
+set it as an environment variable, this medium article is a good reference on how to go about that,
+the clientId is very important as it, gives your app authorization when communicating with the
+unsplash API.
 `https://www.sandromaglione.com/techblog/how-to-use-environmental-variables-in-flutter`.
 
 ## Table of Contents

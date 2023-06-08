@@ -30,12 +30,15 @@ class PhotoItem extends StatelessWidget {
             child: Material(
               child: InkWell(
                 onTap: onTapped,
-                child: Container(
+                child: SizedBox(
                   height: 170,
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: CachedNetworkImageProvider(imageUrl), fit: BoxFit.cover),
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    progressIndicatorBuilder: (_, __, ___) =>
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (_, __, ___) => Container(color: Colors.redAccent),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -48,10 +51,13 @@ class PhotoItem extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(color: Colors.black87, fontWeight: FontWeight.w500, fontSize: 16),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                  maxLines: 1,
                 ),
               ],
             ),
