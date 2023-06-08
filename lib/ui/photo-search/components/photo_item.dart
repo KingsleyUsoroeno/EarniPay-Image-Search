@@ -51,7 +51,7 @@ class PhotoItem extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium
-                      ?.copyWith(color: Colors.grey, fontWeight: FontWeight.w500, fontSize: 16),
+                      ?.copyWith(color: Colors.black87, fontWeight: FontWeight.w500, fontSize: 16),
                 ),
               ],
             ),

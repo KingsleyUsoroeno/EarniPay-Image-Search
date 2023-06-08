@@ -17,6 +17,9 @@ PhotoSearchResult _$PhotoSearchResultFromJson(Map<String, dynamic> json) =>
       smallS3: json['smallS3'] as String,
       regular: json['regular'] as String,
       full: json['full'] as String,
+      description: json['description'] as String? ?? '',
+      altDescription: json['altDescription'] as String? ?? '',
+      authorName: json['authorName'] as String,
     );
 
 Map<String, dynamic> _$PhotoSearchResultToJson(PhotoSearchResult instance) =>
@@ -30,4 +33,7 @@ Map<String, dynamic> _$PhotoSearchResultToJson(PhotoSearchResult instance) =>
       'small': instance.small,
       'thumb': instance.thumb,
       'smallS3': instance.smallS3,
+      'description': instance.description,
+      'altDescription': instance.altDescription,
+      'authorName': instance.authorName,
     };

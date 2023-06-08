@@ -28,7 +28,11 @@ class PhotoSearchCubit extends HydratedCubit<PhotoSearchState> {
   }
 
   String get _searchQuery {
-    return state is ImageSearchLoadedState ? (state as ImageSearchLoadedState).searchQuery : "";
+    if (state is ImageSearchLoadedState) {
+      return (state as ImageSearchLoadedState).searchQuery;
+    } else {
+      return "";
+    }
   }
 
   Future<void> loadMoreImages(List<PhotoSearchResult> photos) async {

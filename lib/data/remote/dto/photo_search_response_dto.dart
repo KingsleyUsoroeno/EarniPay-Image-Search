@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'photo_search_response_dto.g.dart';
 
+part 'photo_search_response_dto.g.dart';
 
 @JsonSerializable()
 class PhotoSearchResponseDto {
@@ -24,7 +24,9 @@ class PhotoSearchResultDto {
   @JsonKey(includeIfNull: true)
   final String? description;
   @JsonKey(name: "alt_description", includeIfNull: true)
-  final String altDescription;
+  final String? altDescription;
+  @JsonKey(name: "user")
+  final PhotoAuthorDto photoAuthor;
 
   PhotoSearchResultDto({
     required this.id,
@@ -32,9 +34,11 @@ class PhotoSearchResultDto {
     required this.urls,
     required this.description,
     required this.altDescription,
+    required this.photoAuthor,
   });
 
-  factory PhotoSearchResultDto.fromJson(Map<String, dynamic> json) => _$PhotoSearchResultDtoFromJson(json);
+  factory PhotoSearchResultDto.fromJson(Map<String, dynamic> json) =>
+      _$PhotoSearchResultDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$PhotoSearchResultDtoToJson(this);
 }
@@ -75,4 +79,16 @@ class TagDto {
   factory TagDto.empty() => TagDto(type: "", title: "");
 
   Map<String, dynamic> toJson() => _$TagDtoToJson(this);
+}
+
+@JsonSerializable()
+class PhotoAuthorDto {
+  final String id;
+  final String name;
+
+  PhotoAuthorDto({required this.id, required this.name});
+
+  factory PhotoAuthorDto.fromJson(Map<String, dynamic> json) => _$PhotoAuthorDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PhotoAuthorDtoToJson(this);
 }

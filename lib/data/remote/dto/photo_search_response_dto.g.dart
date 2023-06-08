@@ -29,7 +29,9 @@ PhotoSearchResultDto _$PhotoSearchResultDtoFromJson(
           .toList(),
       urls: ImageUrlDto.fromJson(json['urls'] as Map<String, dynamic>),
       description: json['description'] as String?,
-      altDescription: json['alt_description'] as String,
+      altDescription: json['alt_description'] as String?,
+      photoAuthor:
+          PhotoAuthorDto.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PhotoSearchResultDtoToJson(
@@ -40,6 +42,7 @@ Map<String, dynamic> _$PhotoSearchResultDtoToJson(
       'tags': instance.tags,
       'description': instance.description,
       'alt_description': instance.altDescription,
+      'user': instance.photoAuthor,
     };
 
 ImageUrlDto _$ImageUrlDtoFromJson(Map<String, dynamic> json) => ImageUrlDto(
@@ -69,4 +72,16 @@ TagDto _$TagDtoFromJson(Map<String, dynamic> json) => TagDto(
 Map<String, dynamic> _$TagDtoToJson(TagDto instance) => <String, dynamic>{
       'type': instance.type,
       'title': instance.title,
+    };
+
+PhotoAuthorDto _$PhotoAuthorDtoFromJson(Map<String, dynamic> json) =>
+    PhotoAuthorDto(
+      id: json['id'] as String,
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$PhotoAuthorDtoToJson(PhotoAuthorDto instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
     };

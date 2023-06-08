@@ -13,6 +13,9 @@ class PhotoSearchResult {
   final String small;
   final String thumb;
   final String smallS3;
+  final String description;
+  final String altDescription;
+  final String authorName;
 
   PhotoSearchResult({
     required this.id,
@@ -24,6 +27,9 @@ class PhotoSearchResult {
     required this.smallS3,
     required this.regular,
     required this.full,
+    this.description = '',
+    this.altDescription = '',
+    required this.authorName,
   });
 
   factory PhotoSearchResult.fromJson(Map<String, dynamic> json) =>
@@ -39,6 +45,7 @@ class PhotoSearchResult {
         smallS3: "",
         regular: "",
         full: "",
+        authorName: "",
       );
 
   Map<String, dynamic> toJson() => _$PhotoSearchResultToJson(this);

@@ -23,6 +23,9 @@ class PhotoSearchRepositoryImpl implements PhotoSearchRepository {
         smallS3: response.urls.smallS3,
         regular: response.urls.regular,
         full: response.urls.full,
+        description: response.description ?? '',
+        altDescription: response.altDescription ?? '',
+        authorName: response.photoAuthor.name,
       );
     }).toList();
   }

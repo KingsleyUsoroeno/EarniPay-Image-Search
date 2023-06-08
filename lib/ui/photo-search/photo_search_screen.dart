@@ -93,36 +93,47 @@ class _PhotoSearchScreenState extends State<PhotoSearchScreen> {
               }
               return true;
             },
-            child: GridView.builder(
-              //controller: scrollController,
+            child: CustomScrollView(
               key: const Key('image-search-result-grid-view'),
-              padding: const EdgeInsets.symmetric(horizontal: 17.0, vertical: 20.0),
-              itemCount: state.imageResults.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                childAspectRatio: 4 / 5,
-              ),
-              itemBuilder: (_, int index) {
-                final result = state.imageResults.elementAt(index);
-                return PhotoItem(
-                  imageUrl: result.regular,
-                  title: result.title,
-                  index: index,
-                  onTapped: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => PhotoDetailScreen(
-                          imageUrl: result.regular,
-                          title: result.title,
+              slivers: [
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 17.0, vertical: 20.0),
+                  sliver: SliverGrid(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      childAspectRatio: 4 / 5,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: state.imageResults.length,
+                      (_, int index) {
+                        final photo = state.imageResults[index];
+                        return PhotoItem(
+                          imageUrl: photo.regular,
+                          title: photo.title,
                           index: index,
-                        ),
-                      ),
-                    );
-                  },
-                );
-              },
+                          onTapped: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) => PhotoDetailScreen(photoResult: photo, index: index),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                if (_isLoadingMore)
+                  const SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(8, 24, 8, 13),
+                      child: Center(child: CircularProgressIndicator()),
+                    ),
+                  ),
+              ],
             ),
           ),
         ImageSearchErrorState() => Center(

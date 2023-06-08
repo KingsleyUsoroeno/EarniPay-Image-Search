@@ -1,13 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:earnipay_image_search/domain/models/photo_search_result.dart';
 import 'package:flutter/material.dart';
 
 class PhotoDetailScreen extends StatelessWidget {
-  final String imageUrl, title;
+  final PhotoSearchResult photoResult;
   final int index;
 
   const PhotoDetailScreen({
     Key? key,
-    required this.imageUrl,
-    required this.title,
+    required this.photoResult,
     required this.index,
   }) : super(key: key);
 
@@ -28,20 +29,44 @@ class PhotoDetailScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Hero(
-            tag: "$imageUrl$index",
+            tag: "${photoResult.regular}$index",
             transitionOnUserGestures: true,
-            child: Container(
+            child: SizedBox(
               height: 400,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: NetworkImage(imageUrl), fit: BoxFit.cover)),
+              width: double.infinity,
+              child: CachedNetworkImage(
+                imageUrl: photoResult.regular,
+                progressIndicatorBuilder: (_, __, ___) => const CircularProgressIndicator(),
+                errorWidget: (_, __, ___) => Container(color: Colors.redAccent),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 30),
           Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: Text(title, style: Theme.of(context).textTheme.titleLarge,),
-          )
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: RichText(
+              text: TextSpan(
+                  style: Theme.of(context).textTheme.titleMedium,
+                  text: "This photo was taken by the author ",
+                  children: [
+                    TextSpan(
+                        text: photoResult.authorName,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(fontWeight: FontWeight.bold))
+                  ]),
+            ),
+          ),
+          if (photoResult.description.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(left: 15, top: 20, right: 15),
+              child: Text(
+                photoResult.description,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
         ],
       ),
     );
