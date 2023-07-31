@@ -4,5 +4,10 @@ import 'injection.config.dart';
 
 final getIt = GetIt.instance;
 
+const localhost = Environment('test');
+const production = Environment('prod');
+
 @InjectableInit(preferRelativeImports: true, asExtension: true)
-void configureDependencies() => getIt.init();
+void configureDependencies(Environment env) => getIt.init(environment: env.name);
+
+//

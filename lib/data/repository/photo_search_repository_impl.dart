@@ -2,7 +2,9 @@ import 'package:earnipay_image_search/data/remote/dto/photo_search_response_dto.
 import 'package:earnipay_image_search/data/remote/services/photo_search_service.dart';
 import 'package:earnipay_image_search/domain/models/photo_search_result.dart';
 import 'package:earnipay_image_search/domain/repository/photo_search_repository.dart';
+import 'package:injectable/injectable.dart';
 
+@Singleton(as: PhotoSearchRepository)
 class PhotoSearchRepositoryImpl implements PhotoSearchRepository {
   final PhotoSearchService _imageSearchService;
 

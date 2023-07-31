@@ -25,7 +25,9 @@ class _DioService extends DioForNative {
 class _AppInterceptors extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers.addAll({'Authorization': 'Client-ID $clientId'});
+    if (clientId.isNotEmpty) {
+      options.headers.addAll({'Authorization': 'Client-ID $clientId'});
+    }
     super.onRequest(options, handler);
   }
 
